@@ -6,12 +6,12 @@
 
 <h3>Contacts</h3>
 
+<%  %>
 <ul>
   <% for contact in @contacts %>
     <li>
-      <a href="/contacts/<%= contact["id"] %>">
-        <%= contact["last_name"] %>, <%= contact["first_name"] %>
-      </a>
+      <%= contact["first_name"] %>
+      <%= contact["last_name"] %>
     </li>
   <% end %>
 </ul>
@@ -20,9 +20,6 @@
   <a href="/contacts/new?company_id=<%= @company["id"] %>">New Contact</a>
 </p>
 
-<p><a href="/companies">Back to All Companies</a></p>
-
-<form action="/companies/<%= @company["id"] %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button>Delete Company</button>
-</form>
+<p>
+  <a href="/companies">Back to All Companies</a>
+</p>

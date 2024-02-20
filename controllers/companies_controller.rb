@@ -5,11 +5,10 @@ class CompaniesController < ApplicationController
     @companies = Company.all
     # render companies/index view
   end
-  
+
   def show
     # find a Company
-    @company = Company.find_by({ "id" => params["id"] })
-    # find Contacts for the Company
+    @company = Company.find_by({"id" => params["id"]})
     @contacts = Contact.where({ "company_id" => @company["id"] })
     # render companies/show view with details about Company
   end
@@ -21,50 +20,32 @@ class CompaniesController < ApplicationController
   def create
     # start with a new Company
     @company = Company.new
-
     # assign user-entered form data to Company's columns
     @company["name"] = params["name"]
     @company["city"] = params["city"]
     @company["state"] = params["state"]
-
     # save Company row
     @company.save
-
     # redirect user
     redirect_to "/companies"
   end
 
-  def edit
-    # find a Company
-    @company = Company.find_by({ "id" => params["id"] })
-    # render view with edit Company form
-  end
+  # def edit
+  #   # find a Company
+  #   # render view with edit Company form
+  # end
 
-  def update
-    # find a Company
-    @company = Company.find_by({ "id" => params["id"] })
+  # def update
+  #   # find a Company
+  #   # assign user-entered form data to Company's columns
+  #   # save Company row
+  #   # redirect user
+  # end
 
-    # assign user-entered form data to Company's columns
-    @company["name"] = params["name"]
-    @company["city"] = params["city"]
-    @company["state"] = params["state"]
-
-    # save Company row
-    @company.save
-
-    # redirect user
-    redirect_to "/companies"
-  end
-
-  def destroy
-    # find a Company
-    @company = Company.find_by({ "id" => params["id"] })
-
-    # destroy Company row
-    @company.destroy
-
-    # redirect user
-    redirect_to "/companies"
-  end
+  # def destroy
+  #   # find a Company
+  #   # destroy Company row
+  #   # redirect user
+  # end
 
 end
